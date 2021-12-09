@@ -1,0 +1,15 @@
+<h1>Bienvenido!</h1>
+
+<div class="container">
+    Bienvenido {{name}}. App de prueba. Puedes manejar tus tareas <a routerLink="/todos">aqui</a>
+</div>
+
+<div class="container">
+    Click aqui para obtener un mensaje de bienvenida propio
+    <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Obtener bienvenida</button>
+</div>
+
+<div class="container">
+    <h2>Tu mensaje de bienvenida propio</h2>
+    {{welcomeMessageFromService}}
+</div>

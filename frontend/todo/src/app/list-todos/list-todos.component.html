@@ -1,0 +1,36 @@
+<h1>Mis tareas</h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [(ngModel)] = "mostrarTodos">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Mostrar todas las tareas</label>
+      </div>
+<table class="table">
+    <caption>Mis tareas</caption>
+    <thead>
+        <tr>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Completado</th>
+            <th>Actualizar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let todo of todos">
+        <tr *ngIf="!todo.done || mostrarTodos">
+            <td>{{todo.description}}</td>
+            <td>{{todo.targetDate | date:'dd/MM/yyyy'}}</td>
+            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" [(ngModel)]=todo.done (click)="saveDone(todo.id,todo)" aria-label=""></td>
+            <td><button (click)="updateTodo(todo.id)" class="btn btn-success">Actualizar</button></td>
+            <td><button (click)="deleteTodo(todo.id)" class="btn btn-warning">Eliminar</button></td>
+        </tr>
+        </ng-container>
+    </tbody>
+</table>
+<div class="row">
+    <button (click)="addTodo()" class="btn btn-success">Agregar</button>
+</div>
+</div>

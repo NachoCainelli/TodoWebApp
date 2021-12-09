@@ -1,0 +1,23 @@
+<h1>Login!</h1>
+
+<div class="container">
+    <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+
+    <form [formGroup]="loginForm">
+        Usuario: <input [class.is-invalid]="loginForm.get('username').touched && loginForm.get('username').invalid" 
+        type="text" class="form-control" formControlName="username">
+        Contraseña: <input type="password" class="form-control" formControlName="userpassword">
+        <br>
+        <button [disabled]="!loginForm.valid" (click)=handleJWTAuthLogin() class="btn btn-primary" type="submit">Ingresar</button>
+    </form>
+
+    <!--<div>
+        Usuario : <input type="text" name="username" [(ngModel)]="username">
+        Contraseña : <input type="password" name="password" [(ngModel)]="password">
+
+        <button (click)=handleLogin() class="btn btn-success">Login</button>
+        <button (click)=handleBasicAuthLogin() class="btn btn-success">Login</button>
+        <button (click)=handleJWTAuthLogin() class="btn btn-success">Login</button>
+    </div>
+    -->
+</div>
